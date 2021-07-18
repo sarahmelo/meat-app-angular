@@ -19,4 +19,8 @@ export class RestaurantsService {
     restaurantById(id: string) :Observable<RestaurantModel> {
       return this.http.get(`${MEAT_API}restaurants/${id}`).map(response => response.json()).catch(ErrorHandler.handleError)
     } 
+
+    reviewsOfRestaurant(id: string) :Observable<RestaurantModel> {
+      return this.http.get(`${MEAT_API}restaurants/${id}/reviews`).map(response => response.json()).catch(ErrorHandler.handleError)
+    }
 }

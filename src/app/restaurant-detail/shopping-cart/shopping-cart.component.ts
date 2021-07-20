@@ -13,25 +13,24 @@ export class ShoppingCartComponent implements OnInit {
 
   }
 
-  //Expoe os item
-  item(): any[] {
+  items(): any[] {
     return this.shoppingCartService.items;
   }
-  
-  clear() {
-    return this.shoppingCartService.clear();
+
+  clear(){
+    this.shoppingCartService.clear()
   }
 
-  removeItem(item: any) {
-    return this.shoppingCartService.removeItem(item);
-  } 
+  removeItem(item: any){
+    this.shoppingCartService.removeItem(item)
+  }
 
-  addItem(item: any) {
-    return this.shoppingCartService.addItem(item)
+  addItem(item: any){
+    this.shoppingCartService.addItem(item)
   }
 
   total(): number {
-    return this.shoppingCartService.total();
+    return this.shoppingCartService.total()
   }
 
 }

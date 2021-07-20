@@ -17,6 +17,10 @@ export class ShoppingCartComponent implements OnInit {
   item(): any[] {
     return this.shoppingCartService.items;
   }
+  
+  clear() {
+    return this.shoppingCartService.clear();
+  }
 
   removeItem(item: any) {
     return this.shoppingCartService.removeItem(item);
@@ -24,10 +28,6 @@ export class ShoppingCartComponent implements OnInit {
 
   addItem(item: any) {
     return this.shoppingCartService.addItem(item)
-  }
-
-  clear() {
-    return this.shoppingCartService.clear();
   }
 
   total(): number {

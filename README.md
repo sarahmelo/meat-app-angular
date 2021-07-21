@@ -1,10 +1,14 @@
 # Meat - Angular App Starter
 
-## 1. Passos para começar
+#### Aplicativo desenvolvido através do curso de Angular e typescript da cod3r
+link do curso - (https://www.udemy.com/share/101xSA2@PW1gbF9ZQ1wJdEVAOGJOfhQ=/)
 
-### Clonando o Repositório
-
-`git clone https://github.com/cod3rcursos/meat-app-starter.git`
+#### Tecnologias abordadas:
+* Angular
+* Javascript
+* Typescript
+* RxJS
+ 
 
 ### Instalando as Dependências
 

@@ -15,7 +15,7 @@ export class ShoppingCartService {
         console.log('esse é o item:', item)
         let foundItem = this.items.find((myItem) => myItem.menuItem.id === item.id)
         if(foundItem) {
-            foundItem.quantity = foundItem.quantity + 1
+            this.increaseQty(foundItem)
             console.log('mais 1')
             console.log(this.items)
         } else {
@@ -25,6 +25,17 @@ export class ShoppingCartService {
             console.log(this.items.length)
         }
         console.log(this.items)
+    }
+
+    increaseQty(item: CartItemModel) {
+        item.quantity = item.quantity + 1
+    }
+
+    decreaseQty(item: CartItemModel) {
+        item.quantity = item.quantity - 1
+        if(item.quantity === 0) {
+            this.removeItem(item)
+        }
     }
 
     removeItem(item: CartItemModel) {

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CartItemModel } from 'app/restaurant-detail/shopping-cart/cart-Item.model';
 
+
 @Component({
   selector: 'mt-order-items',
   templateUrl: './order-items.component.html',

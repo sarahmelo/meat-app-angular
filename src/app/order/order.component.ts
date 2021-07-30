@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, EmailValidator } from '@angular/forms'
 import { Router } from '@angular/router';
 import { CartItemModel } from 'app/restaurant-detail/shopping-cart/cart-Item.model';
 import { RadioOption } from 'app/shared/radio/radio-option.model';
@@ -15,6 +15,7 @@ export class OrderComponent implements OnInit {
   delivery: number = 8;
 
   orderForm: FormGroup
+  
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   numberPattern = /^[0-9]*$/
 
@@ -32,7 +33,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
 
-    this.orderForm  = this.formBuilder.group({
+    this.orderForm = this.formBuilder.group({
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
       email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -40,8 +41,22 @@ export class OrderComponent implements OnInit {
       number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optionalAddress: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('', [Validators.required])
-    })
+    }, {validator: OrderComponent.equalsTo})
   }
+
+  static equalsTo(group: AbstractControl) : {[key: string] : boolean } {
+    const email = group.get('email')
+    const emailConfirmation = group.get('emailConfirmation')
+
+    if(!email|| !emailConfirmation) {
+      return undefined
+    }
+    if(email.value !== emailConfirmation.value) {
+      return {emailsNotMatch: true}
+    }
+    return undefined
+  }
+ 
 
   itemsValue(): number {
     return this.orderService.SrvItemsValue()

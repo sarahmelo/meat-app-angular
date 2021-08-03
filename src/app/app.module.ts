@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { LOCALE_ID } from '@angular/core';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ROUTES } from './app.routes';
 
